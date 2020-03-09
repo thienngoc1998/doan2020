@@ -15,6 +15,12 @@ class CreateNsxTable extends Migration
     {
         Schema::create('nsx', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->integer('slug');
+            $table->integer('order');
+            $table->integer('active');
+            $table->integer('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();
         });
     }
